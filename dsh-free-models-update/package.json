@@ -1,14 +1,30 @@
 {
   "name": "dsh-free-models-update",
   "version": "2.0.0",
-  "private": true,
-  "description": "OpenRouter 免费模型管理：设置页一键更新 + 文本/多模态标注 + 最新置顶 + Key 管理与调用测试",
+  "description": "DSH (DeepSeek Harness Desktop) 插件：设置页一键管理 OpenRouter 免费模型——一键更新 / 文本·多模态标注 / 最新置顶 / Key 管理与调用测试。",
+  "license": "MIT",
   "type": "module",
   "main": "index.js",
   "exports": {
     ".": "./index.js",
     "./client": "./client.js",
     "./package.json": "./package.json"
+  },
+  "files": [
+    "index.js",
+    "client.js"
+  ],
+  "keywords": [
+    "dsh",
+    "deepseek-harness",
+    "plugin",
+    "openrouter",
+    "free-models",
+    "llm"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cheneysizhe/dsh-free-models-update.git"
   },
   "dsh": {
     "client": {

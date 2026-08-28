@@ -21,6 +21,23 @@ DeepSeek Harness Desktop 插件：在「设置」中一键管理 **OpenRouter �
 
 > 卸载：双击 `uninstall.cmd`，然后重启 DSH。
 
+### 方式二：通过 DSH 插件管理器安装（npm）
+
+本插件已发布到 npm：**`dsh-free-models-update`**（v2.0.0）。
+
+1. DSH → **设置 → 插件管理** → 粘贴包名 **`dsh-free-models-update`** → 安装
+2. **完全退出并重启 DSH Desktop**
+3. 打开 **设置 → 免费模型**，按需配置
+
+> 若管理器装完重启后「免费模型」页面未出现，可改用 `install.cmd`（可靠路径），或编辑
+> `%USERPROFILE%\.dsh\profiles\desktop\cordis.patch.yml` 追加以下条目后重启：
+> ```yaml
+> - insert:
+>     - id: free-models-update
+>       name: 'dsh-free-models-update'
+>       config: {}
+> ```
+
 ## 工作原理与安全
 
 | 项 | 说明 |
