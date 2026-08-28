@@ -49,6 +49,13 @@ window.__ModuleLoader__.load({
     }
     function modality(m) { return (m && m.length > 1) ? "multimodal" : "text"; }
 
+    // OpenRouter key 必须全是可打印 ASCII；否则 fetch 的 Authorization 头会因非 Latin-1 字符报错。
+    function cleanKey(k) {
+      var t = String(k || "").trim();
+      if (/[^\x21-\x7E]/.test(t)) return null;
+      return t;
+    }
+
     function FreeModelsSection(props) {
       var api = props.api;
       var state = React.useState({ loading: false, testing: false, saving: false, error: null, models: [], keyConfigured: false, keySource: null, testResult: null });
@@ -115,8 +122,8 @@ window.__ModuleLoader__.load({
       }
 
       function saveKey() {
-        var key = draft.trim();
-        if (!key) { applyPatch({ error: "请先输入 OpenRouter Key" }); return; }
+        var key = cleanKey(draft);
+        if (!key) { applyPatch({ error: "请先输入 OpenRouter Key（仅含可打印 ASCII）" }); return; }
         if (!api || !api.credentials || !api.credentials.set) { applyPatch({ error: "credentials api 不可用" }); return; }
         applyPatch({ saving: true, error: null });
         api.credentials.set({ ref: CRED_REF, value: key })
@@ -128,8 +135,8 @@ window.__ModuleLoader__.load({
       }
 
       function testKey() {
-        var key = draft.trim();
-        if (!key) { applyPatch({ error: "请先输入 Key 再测试（测试当前输入框的 Key）" }); return; }
+        var key = cleanKey(draft);
+        if (!key) { applyPatch({ error: "请先输入 Key 再测试（仅含可打印 ASCII；可用「保存 Key」先存）" }); return; }
         applyPatch({ testing: true, testResult: null, error: null });
         fetch(KEY_API, { headers: { authorization: "Bearer " + key }, mode: "cors" })
           .then(function (r) { return r.json(); })
