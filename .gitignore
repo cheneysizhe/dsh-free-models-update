@@ -1,0 +1,16 @@
+# ===== 密钥与本地配置：绝不提交 =====
+.credentials*
+settings.yaml
+*.bak*
+*.key
+*.pem
+.env
+.env.*
+*_API_KEY*
+
+# ===== 系统 / 编辑器杂项 =====
+Thumbs.db
+Desktop.ini
+.DS_Store
+*.log
+node_modules/
