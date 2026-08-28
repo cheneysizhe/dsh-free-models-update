@@ -1,6 +1,6 @@
 {
   "name": "dsh-free-models-update",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "DSH (DeepSeek Harness Desktop) 插件：设置页一键管理 OpenRouter 免费模型——一键更新 / 文本·多模态标注 / 最新置顶 / Key 管理与调用测试。",
   "license": "MIT",
   "type": "module",
